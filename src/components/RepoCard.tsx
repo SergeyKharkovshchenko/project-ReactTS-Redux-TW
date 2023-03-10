@@ -9,6 +9,7 @@ export function RepoCard({ repo }: { repo: IRepo }) {
 
   const [isFav, setIsFav] = useState(favourites.includes(repo.html_url))
   
+//React.MouseEvent<HTMLButtonElement> - type of event
   const addToFavourite = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
     addFavourite(repo.html_url)

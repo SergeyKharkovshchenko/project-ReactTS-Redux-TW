@@ -13,7 +13,10 @@ export const githubApi = createApi({
   refetchOnFocus: true,
 //required key endpoints is a function that received parameter 'build'
   endpoints: build => ({
+
+    
 //it returns object with listing of all necessary endpoints
+//we receive data with data types IUser[] (decribed in models), string into query
     searchUsers: build.query<IUser[], string>({
       query: (search: string) => ({
         url: `search/users`,
@@ -22,8 +25,12 @@ export const githubApi = createApi({
           per_page: 10
         }
       }),
+// this callback transforms data from response
       transformResponse: (response: ServerResponse<IUser>) => response.items
     }),
+
+
+    //we receive data with data types IRepo[] (decribed in models), string into query
     getUserRepos: build.query<IRepo[], string>({
       query: (username: string) => ({
         url: `users/${username}/repos`
@@ -35,5 +42,5 @@ export const githubApi = createApi({
   })
 })
 
-// hook useSearchUsersQuery
+// hook useLazyGetUserReposQuery - Lazy means we don't run hook automatically
 export const {useSearchUsersQuery, useLazyGetUserReposQuery} = githubApi

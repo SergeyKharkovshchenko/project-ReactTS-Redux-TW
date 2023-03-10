@@ -15,6 +15,7 @@ export const githubSlice = createSlice({
   initialState,
   reducers: {
     addFavourite(state, action: PayloadAction<string>) {
+//action.payload keeps repo url
       state.favourites.push(action.payload)
       localStorage.setItem(LS_FAV_KEY, JSON.stringify(state.favourites))
     },
