@@ -4,6 +4,7 @@ import {useActions} from '../hooks/actions'
 import {useAppSelector} from '../hooks/redux'
 
 export function RepoCard({ repo }: { repo: IRepo }) {
+
   const {addFavourite, removeFavourite} = useActions()
   const {favourites} = useAppSelector(state => state.github)
 
